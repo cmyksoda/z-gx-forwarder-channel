@@ -1,0 +1,13 @@
+# build output and scratch
+build/out/
+build/extracted/
+build/.venv/
+__pycache__/
+*.pyc
+
+# third-party inputs the build needs; see BUILDING.md for where to get them
+donor/
+build/tools/benzin/
+
+*.bak
+*.zip
