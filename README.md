@@ -1,6 +1,6 @@
 # Z-GX Forwarder Channel
 
-A Wii channel that boots straight into **Z-GX**, an experimental Sega Saturn emulator.
+A Wii channel that boots straight into [**Z-GX**](https://github.com/hotker79/Z-GX), an experimental Sega Saturn emulator.
 
 ## Screenshots
 
