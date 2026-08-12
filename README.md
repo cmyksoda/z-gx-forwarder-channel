@@ -12,8 +12,6 @@ A Wii channel that boots straight into **Z-GX**, an experimental Sega Saturn emu
 | ------------- | ------------- |
 | <img width="352" alt="channel icon as a 16:9 set shows it" src="preview/icon_16_9.gif" /> | <img height="200" alt="channel banner as a 16:9 set shows it" src="preview/banner_16_9.png" /> |
 
-Both are rendered from the real `brlyt`/`brlan` keyframes in the finished WAD, not mocked up — see [Previews](BUILDING.md#previews).
-
 ## Requirements
 
 - **IOS58** — update to System Menu 4.3, or use the [IOS58 Installer](https://wiibrew.org/wiki/IOS58_Installer).
