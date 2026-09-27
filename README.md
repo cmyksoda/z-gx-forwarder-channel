@@ -4,13 +4,35 @@ A Wii channel that boots straight into [**Z-GX**](https://github.com/hotker79/Z-
 
 ## Screenshots
 
-| 4:3 Icon | 4:3 Banner |
-| ------------- | ------------- |
-| <img width="256" alt="channel icon as a 4:3 set shows it" src="preview/icon_4_3.gif" /> | <img height="200" alt="channel banner as a 4:3 set shows it" src="preview/banner_4_3.png" /> |
+<table>
+  <thead>
+    <tr>
+      <th width="50%">4:3 Icon</th>
+      <th width="50%">4:3 Banner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img width="100%" alt="channel icon as a 4:3 set shows it" src="preview/icon_4_3.gif" /></td>
+      <td><img width="100%" alt="channel banner as a 4:3 set shows it" src="preview/banner_4_3.png" /></td>
+    </tr>
+  </tbody>
+</table>
 
-| 16:9 Icon | 16:9 Banner |
-| ------------- | ------------- |
-| <img width="352" alt="channel icon as a 16:9 set shows it" src="preview/icon_16_9.gif" /> | <img height="200" alt="channel banner as a 16:9 set shows it" src="preview/banner_16_9.png" /> |
+<table>
+  <thead>
+    <tr>
+      <th width="50%">16:9 Icon</th>
+      <th width="50%">16:9 Banner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img width="100%" alt="channel icon as a 16:9 set shows it" src="preview/icon_16_9.gif" /></td>
+      <td><img width="100%" alt="channel banner as a 16:9 set shows it" src="preview/banner_16_9.png" /></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Requirements
 
