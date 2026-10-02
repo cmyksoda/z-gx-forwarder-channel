@@ -56,10 +56,12 @@ def lz77_compress(src):
     pos = 0
     flag_pos = None
     flag_bit = 0
+
     while pos < n:
         if flag_bit == 0:
             flag_pos = len(out)
             out.append(0)
+
         best_len, best_disp = 0, 0
         if pos + 3 <= n:
             key = src[pos:pos + 3]
@@ -77,6 +79,7 @@ def lz77_compress(src):
                         break
                 cand = prevs[cand]
                 tries += 1
+
         if best_len >= 3:
             out[flag_pos] |= 0x80 >> flag_bit
             out.append(((best_len - 3) << 4) | ((best_disp - 1) >> 8))
@@ -85,6 +88,7 @@ def lz77_compress(src):
         else:
             out.append(src[pos])
             adv = 1
+
         for i in range(pos, min(pos + adv, n - 2)):
             key = src[i:i + 3]
             prevs[i] = heads.get(key, -1)
@@ -198,6 +202,7 @@ class U8:
 
     def to_bytes(self):
         count = len(self.nodes)
+
         # string table
         strings = bytearray()
         offs = []
@@ -206,6 +211,7 @@ class U8:
             strings += nd.name.encode("ascii") + b"\0"
         header_size = count * 12 + len(strings)
         data_off = ALIGN(0x20 + header_size, 64)
+
         # file data, 32-byte aligned as the originals are
         blobs, cur = [], data_off
         for nd in self.nodes:
@@ -215,6 +221,7 @@ class U8:
             cur = ALIGN(cur, 32)
             blobs.append(cur)
             cur += len(nd.data)
+
         total = ALIGN(cur, 32)
         out = bytearray(b"\0" * total)
         out[0:16] = struct.pack(">IIII", self.MAGIC, 0x20, header_size, data_off)
@@ -334,11 +341,13 @@ class WAD:
         hdr, wtype, cert_sz, crl_sz, tik_sz, tmd_sz, data_sz, foot_sz = \
             struct.unpack(">IIIIIIII", d[:32])
         o = ALIGN(hdr)
+
         def take(n):
             nonlocal o
             b = d[o:o + n]
             o = ALIGN(o + n)
             return b
+
         certs, crl, tik, tmd = take(cert_sz), take(crl_sz), take(tik_sz), take(tmd_sz)
         self = cls(certs, crl, tik, tmd, [], b"")
         key = self.title_key()

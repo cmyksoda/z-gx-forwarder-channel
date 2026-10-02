@@ -188,6 +188,7 @@ def check_geometry(kind, lyt, anims, arc):
             p = by_name.get(sname)
             if not p:
                 continue
+
             # accumulate ancestor translation extremes
             x0 = x1 = y0 = y1 = 0.0
             j = panes.index(p)
@@ -204,10 +205,12 @@ def check_geometry(kind, lyt, anims, arc):
                     else:
                         y0, y1 = y0 + lo, y1 + hi
                 j = q["parent"]
+
             tr = anim.get(sname, {})
             sx = track_range(tr["sx"], frames)[1] if "sx" in tr else p["sx"]
             sy = track_range(tr["sy"], frames)[1] if "sy" in tr else p["sy"]
             hw, hh = p["w"] * sx / 2.0, p["h"] * sy / 2.0
+
             # the fly-in deliberately starts off-screen, so only the resting
             # end of the travel is checked for the x extent
             rest_x = PV.hermite(tr["tx"], frames) if "tx" in tr else p["tx"]
@@ -295,6 +298,7 @@ def installed_banner_report(ours):
     nand = os.path.expanduser("~/.local/share/dolphin-emu/Wii/title/00010001")
     if not os.path.isdir(nand):
         return
+
     print("\n-- installed banner memory (Dolphin NAND, uncompressed)")
     total, rows = 0, []
     for tid in sorted(os.listdir(nand)):
@@ -314,6 +318,7 @@ def installed_banner_report(ours):
                          names[0] if names else "?", banner))
             total += banner
             break
+
     installed_ours = next((b for t, _n, b in rows if t == TITLE_ID), None)
     for tid, name, banner in sorted(rows, key=lambda r: -r[2]):
         mark = "  <- this channel, as currently installed" if tid == TITLE_ID else ""
@@ -325,6 +330,7 @@ def installed_banner_report(ours):
         print(f"  [info] {'':6s} {'after reinstalling this WAD':24s} {after:9,} "
               f"({after/1048576:.2f} MB, {(ours-installed_ours)/1024:+.0f} KB)")
         total = after
+
     # Name the worst offenders. Shrinking *this* channel cannot rescue a system
     # already over the line, and the first instinct is to keep squeezing the WAD
     # in front of you -- so point at where the memory actually is.

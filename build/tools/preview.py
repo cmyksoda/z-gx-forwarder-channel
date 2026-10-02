@@ -156,11 +156,13 @@ def render_frame(panes, tex, anim, frame, canvas):
             al = hermite(tr.get("alpha"), frame) if "alpha" in tr else q["alpha"]
             a *= max(0.0, min(255.0, al)) / 255.0
             j = q["parent"]
+
         if p["kind"] != "pic1" or a <= 0.002:
             continue
         t = tex.get(p["mat"])
         if t is None:
             continue
+
         tr = anim.get(p["name"], {})
         sx = hermite(tr.get("sx"), frame) if "sx" in tr else p["sx"]
         sy = hermite(tr.get("sy"), frame) if "sy" in tr else p["sy"]

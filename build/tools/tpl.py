@@ -92,7 +92,8 @@ def encode(img, fmt, palette=None, size=None):
             ar, gb = bytearray(), bytearray()
             for y in range(by, by + 4):
                 for x in range(bx, bx + 4):
-                    r, g, b, a = px[min(x, w - 1), min(y, h - 1)] if (x < w and y < h) else (0, 0, 0, 0)
+                    r, g, b, a = (px[min(x, w - 1), min(y, h - 1)]
+                                  if (x < w and y < h) else (0, 0, 0, 0))
                     ar += bytes((a, r))
                     gb += bytes((g, b))
             out += ar + gb
@@ -114,6 +115,7 @@ def decode(data, w, h, fmt, pal=None):
     img = Image.new("RGBA", (w, h))
     px = img.load()
     o = 0
+
     if fmt == RGBA8:
         for bx, by in _tiles(w, h, tw, th):
             blk = data[o:o + 64]
@@ -138,13 +140,17 @@ def decode(data, w, h, fmt, pal=None):
                 x = bx
                 while x < bx + tw:
                     if fmt == CI8:
-                        i0 = data[o]; o += 1
-                        if x < w and y < h: px[x, y] = pal[i0]
+                        i0 = data[o]
+                        o += 1
+                        if x < w and y < h:
+                            px[x, y] = pal[i0]
                         x += 1
                     else:
-                        byte = data[o]; o += 1
+                        byte = data[o]
+                        o += 1
                         for k, i0 in enumerate((byte >> 4, byte & 0xF)):
-                            if x + k < w and y < h: px[x + k, y] = pal[i0]
+                            if x + k < w and y < h:
+                                px[x + k, y] = pal[i0]
                         x += 2
     else:
         raise NotImplementedError(NAMES.get(fmt, fmt))
