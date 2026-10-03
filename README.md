@@ -130,3 +130,7 @@ Sega's assets are used for a non-commercial fan project and are not covered by a
 `banner/` and `icon/` also hold the working files the build never reads — the GIMP `.xcf`s, `icon.png`, and `Z-GX_copy.jpg` (the upstream Z-GX logo the channel art was traced from).
 
 <sub><sup>The icon's banner archive still carries stub textures named after Mario and a Goomba, four by four pixels and fully transparent. They are invisible, and they are there on purpose — every `txl1` entry and every `RLTP` reference in Tantric's animations has to still resolve.</sup></sub>
+
+---
+
+*This project was made with AI assistance. For more information, see [my AI usage statement](https://github.com/cmyksoda/cmyksoda/blob/main/AI_USAGE.md).*
