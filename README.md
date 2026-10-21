@@ -70,6 +70,24 @@ Use the WAD manager you installed with, or delete the channel from the Wii syste
 
 **Black screen, or nothing happens after the splash.** Almost certainly Z-GX itself rather than the channel — see the warning above. The author's notes say the Saturn BIOS takes around 10 seconds to load, so several seconds of blank screen is expected and not yet a failure. Check that `sd:/apps/ZGX/boot.dol` exists, spelled exactly that way, and that the BIOS is at `sd:/ZGX/bios/bios.bin`.
 
+## Repository contents
+
+| path | |
+|---|---|
+| `Z-GX - ZGXA [cmyksoda].wad` | the channel — install this |
+| `banner/` | banner art, 832×456. `logo.png` and `saturnmk2.png` are the sprites the build composites; `bg.png` is the reference the spiral generator is fitted against; `banner.png` is the reference composite the sprite placements were measured from |
+| `icon/` | icon art, 176×96. `icon_logo.png` is the sprite; `icon_bg.png` is the icon-scale spiral reference |
+| `splash/` | source for both forwarder loading screens |
+| `audio/` | source for the banner sound |
+| `preview/` | the icon animation as GIFs and the banner as stills, rendered from the real keyframes |
+| `build/` | `build.sh` and the Python toolchain that rebuilds everything |
+| `BUILDING.md` | how to rebuild, and what was changed in the GPL'd components |
+| `Icon_Sizing.md` | my notes on Wii channel art sizing for 4:3 versus 16:9 |
+
+`banner/` and `icon/` also hold the working files the build never reads — the GIMP `.xcf`s, `icon.png`, and `Z-GX_copy.jpg` (the upstream Z-GX logo the channel art was traced from).
+
+<sub><sup>The icon's banner archive still carries stub textures named after Mario and a Goomba, four by four pixels and fully transparent. They are invisible, and they are there on purpose — every `txl1` entry and every `RLTP` reference in Tantric's animations has to still resolve.</sup></sub>
+
 ## Credits
 
 ### Emulator forwarded to
@@ -102,34 +120,16 @@ The banner and icon layouts are Tantric's, edited rather than rebuilt — every 
 
 ## License
 
-The parts of this repository that are mine — the build toolchain in `build/`, the channel art, and the documentation — are GPLv3, see [`LICENSE`](LICENSE).
+The parts of this repository that are mine — the build toolchain in `build/`, the channel art, and the documentation — are free software under the [GNU General Public License, version 3](LICENSE).
 
 This channel is built out of other people's GPL'd work, which stays under the licenses it came with:
 
 - the forwarder, banner archive and icon are derived from [FCE Ultra GX](https://github.com/dborth/fceugx)
-- the emulator it launches, [Z-GX](https://github.com/hotker79/Z-GX), is GPLv2 and is **not** redistributed here
+- the emulator it launches, [Z-GX](https://github.com/hotker79/Z-GX), is GPL version 2 and is **not** redistributed here
 
 Nothing here relicenses any of that. Every change made to the FCE Ultra GX components is documented in [BUILDING.md](BUILDING.md) — that file is the GPL modification record as much as it is a build guide.
 
 Sega's assets are used for a non-commercial fan project and are not covered by any of the above; they remain the property of their owners.
-
-## Repository contents
-
-| path | |
-|---|---|
-| `Z-GX - ZGXA [cmyksoda].wad` | the channel — install this |
-| `banner/` | banner art, 832×456. `logo.png` and `saturnmk2.png` are the sprites the build composites; `bg.png` is the reference the spiral generator is fitted against; `banner.png` is the reference composite the sprite placements were measured from |
-| `icon/` | icon art, 176×96. `icon_logo.png` is the sprite; `icon_bg.png` is the icon-scale spiral reference |
-| `splash/` | source for both forwarder loading screens |
-| `audio/` | source for the banner sound |
-| `preview/` | the icon animation as GIFs and the banner as stills, rendered from the real keyframes |
-| `build/` | `build.sh` and the Python toolchain that rebuilds everything |
-| `BUILDING.md` | how to rebuild, and what was changed in the GPL'd components |
-| `Icon_Sizing.md` | my notes on Wii channel art sizing for 4:3 versus 16:9 |
-
-`banner/` and `icon/` also hold the working files the build never reads — the GIMP `.xcf`s, `icon.png`, and `Z-GX_copy.jpg` (the upstream Z-GX logo the channel art was traced from).
-
-<sub><sup>The icon's banner archive still carries stub textures named after Mario and a Goomba, four by four pixels and fully transparent. They are invisible, and they are there on purpose — every `txl1` entry and every `RLTP` reference in Tantric's animations has to still resolve.</sup></sub>
 
 ---
 
